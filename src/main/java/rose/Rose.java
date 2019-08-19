@@ -15,9 +15,6 @@ public class Rose {
 
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
-            if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                items[i].sellIn = items[i].sellIn - 1;
-            }
 
             if (!items[i].name.equals("Sulfuras, Hand of Ragnaros") && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert") && !items[i].name.equals("Aged Brie")) {
                 handleNormalItem(items[i]);
@@ -34,6 +31,7 @@ public class Rose {
     }
 
     private void handleNormalItem(Item item) {
+        item.sellIn -= 1;
         item.quality -= item.quality > 0 ? 1 : 0;
         if (item.sellIn < 0) {
             item.quality -= item.quality > 0 ? 1 : 0;
@@ -41,6 +39,7 @@ public class Rose {
     }
 
     private void handleAgedItem(Item item) {
+        item.sellIn -= 1;
         if (item.quality < 50) {
             item.quality += 1;
         }
@@ -48,6 +47,7 @@ public class Rose {
     }
 
     private void handleBackstageItem(Item item) {
+        item.sellIn -= 1;
         if (item.quality < 50) {
             item.quality += 1;
         }
