@@ -47,21 +47,25 @@ public class Rose {
             }
 
             if (items[i].sellIn < 0) {
-                if (!items[i].name.equals("Aged Brie")) {
-                    if (!items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (items[i].quality > 0) {
-                            if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                                items[i].quality = items[i].quality - 1;
-                            }
-                        }
-                    } else {
-                        items[i].quality = items[i].quality - items[i].quality;
-                    }
-                } else {
-                    if (items[i].quality < 50) {
-                        items[i].quality = items[i].quality + 1;
+                handleItemWithSellInSmallerThanZero(items[i]);
+            }
+        }
+    }
+
+    private void handleItemWithSellInSmallerThanZero(Item item) {
+        if (!item.name.equals("Aged Brie")) {
+            if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                if (item.quality > 0) {
+                    if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+                        item.quality = item.quality - 1;
                     }
                 }
+            } else {
+                item.quality = item.quality - item.quality;
+            }
+        } else {
+            if (item.quality < 50) {
+                item.quality = item.quality + 1;
             }
         }
     }
