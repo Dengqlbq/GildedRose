@@ -52,11 +52,7 @@ public class Rose {
     }
 
     private void handleItemWithSellInSmallerThanZero(Item item) {
-        if (item.name.equals("Aged Brie")) {
-            return;
-        }
-
-        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+        if (!item.name.equals("Sulfuras, Hand of Ragnaros") && !item.name.equals("Aged Brie") && !item.name.equals("Aged Brie")) {
             item.quality -= item.quality > 0 ? 1 : 0;
         }
 
@@ -67,6 +63,10 @@ public class Rose {
     }
 
     private void handleBackstageItem(Item item) {
+        if (item.sellIn < 0) {
+            item.quality -= item.quality > 0 ? 1 : 0;
+        }
+
         if (item.quality < 50) {
             if (item.sellIn < 11) {
                 if (item.quality < 50) {
