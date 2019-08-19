@@ -13,10 +13,21 @@ public class Item {
 
     public int quality;
 
+    public ItemStrategy strategy;
+
     public Item(String name, int sellIn, int quality) {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
+        getItemStrategy(name);
+    }
+
+    private void getItemStrategy(String name) {
+        strategy = ItemStrategyFactory.createItemStrategy(name);
+    }
+
+    public void updateQuality() {
+        strategy.update(this);
     }
 
     @Override
