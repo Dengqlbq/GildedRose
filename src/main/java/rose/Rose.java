@@ -28,6 +28,10 @@ public class Rose {
             if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 handleBackstageItem(items[i]);
             }
+
+            if (items[i].name.equals("Aged Brie")) {
+                handleAgedItem(items[i]);
+            }
         }
     }
 
@@ -49,7 +53,6 @@ public class Rose {
 
     private void handleItemWithSellInSmallerThanZero(Item item) {
         if (item.name.equals("Aged Brie")) {
-            item.quality += item.quality < 50 ? 1 : 0;
             return;
         }
 
@@ -57,7 +60,10 @@ public class Rose {
             item.quality -= item.quality > 0 ? 1 : 0;
         }
 
+    }
 
+    private void handleAgedItem(Item item) {
+        item.quality += item.quality < 50 ? 1 : 0;
     }
 
     private void handleBackstageItem(Item item) {
