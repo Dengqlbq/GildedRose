@@ -42,12 +42,6 @@ public class Rose {
             if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
                 item.quality -= item.quality > 0 ? 1 : 0;
             }
-        } else {
-            if (item.quality >= 50) {
-                return;
-            }
-
-            item.quality = item.quality + 1;
         }
     }
 
@@ -59,10 +53,17 @@ public class Rose {
     }
 
     private void handleAgedItem(Item item) {
+        if (item.quality < 50) {
+            item.quality += 1;
+        }
         item.quality += item.quality < 50 ? 1 : 0;
     }
 
     private void handleBackstageItem(Item item) {
+        if (item.quality < 50) {
+            item.quality += 1;
+        }
+
         if (item.sellIn < 0) {
             item.quality -= item.quality > 0 ? 1 : 0;
         }
