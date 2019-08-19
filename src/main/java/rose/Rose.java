@@ -15,14 +15,12 @@ public class Rose {
 
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
-            preHandleItem(items[i]);
-
             if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
                 items[i].sellIn = items[i].sellIn - 1;
             }
 
-            if (items[i].sellIn < 0) {
-                handleItemWithSellInSmallerThanZero(items[i]);
+            if (!items[i].name.equals("Sulfuras, Hand of Ragnaros") && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert") && !items[i].name.equals("Aged Brie")) {
+                handleNormalItem(items[i]);
             }
 
             if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
@@ -35,21 +33,11 @@ public class Rose {
         }
     }
 
-    private void preHandleItem(Item item) {
-        if (!item.name.equals("Aged Brie")
-                && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-
-            if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                item.quality -= item.quality > 0 ? 1 : 0;
-            }
-        }
-    }
-
-    private void handleItemWithSellInSmallerThanZero(Item item) {
-        if (!item.name.equals("Sulfuras, Hand of Ragnaros") && !item.name.equals("Aged Brie") && !item.name.equals("Aged Brie")) {
+    private void handleNormalItem(Item item) {
+        item.quality -= item.quality > 0 ? 1 : 0;
+        if (item.sellIn < 0) {
             item.quality -= item.quality > 0 ? 1 : 0;
         }
-
     }
 
     private void handleAgedItem(Item item) {
