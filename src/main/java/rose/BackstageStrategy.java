@@ -7,6 +7,7 @@ package rose;
  */
 public class BackstageStrategy implements ItemStrategy {
 
+    @Override
     public void update(Item item) {
         item.sellIn -= 1;
         if (item.quality < 50) {
@@ -19,9 +20,7 @@ public class BackstageStrategy implements ItemStrategy {
 
         if (item.quality < 50) {
             if (item.sellIn < 11) {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-                }
+                item.quality = item.quality + 1;
             }
 
             if (item.sellIn < 6) {

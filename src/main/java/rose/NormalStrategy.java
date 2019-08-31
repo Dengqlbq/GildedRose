@@ -7,6 +7,7 @@ package rose;
  */
 public class NormalStrategy implements ItemStrategy {
 
+    @Override
     public void update(Item item) {
         item.sellIn -= 1;
         item.quality -= item.quality > 0 ? 1 : 0;

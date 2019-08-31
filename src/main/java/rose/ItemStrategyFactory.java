@@ -8,13 +8,15 @@ package rose;
 public class ItemStrategyFactory {
 
     static ItemStrategy createItemStrategy(String name) {
-        if ("Aged Brie".equals(name)) {
-            return new AgedStrategy();
-        } else if ("Backstage passes to a TAFKAL80ETC concert".equals(name)) {
-            return new BackstageStrategy();
-        } else if ("Sulfuras, Hand of Ragnaros".equals(name)) {
-            return new SulfurasStrategy();
+        switch (name) {
+            case "Aged Brie":
+                return new AgedStrategy();
+            case "Backstage passes to a TAFKAL80ETC concert":
+                return new BackstageStrategy();
+            case "Sulfuras, Hand of Ragnaros":
+                return new SulfurasStrategy();
+            default:
+                return new NormalStrategy();
         }
-        return new NormalStrategy();
     }
 }

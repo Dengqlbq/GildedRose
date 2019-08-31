@@ -7,6 +7,7 @@ package rose;
  */
 public class AgedStrategy implements ItemStrategy {
 
+    @Override
     public void update(Item item) {
         item.sellIn -= 1;
         if (item.quality < 50) {
